@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kit Flow Poly | Vídeos 3D com IA</title>
+<meta name="description" content="Aprenda a criar vídeos 3D POV e explicativos com IA, no estilo do @flowpoly.3d. Kit com skills, motor 3D e guia passo a passo. Pagamento único de R$ 37,90.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --tinta: #12151c;
+    --noite: #171c2b;
+    --noite2: #1f2740;
+    --papel: #f6f1e6;
+    --papel2: #ece5d6;
+    --vermelho: #d81f26;
+    --amarelo: #ffd84a;
+    --petroleo: #2b6f86;
+    --cinza: #5b6070;
+    --borda: 3px solid var(--tinta);
+    --sombra: 6px 6px 0 var(--tinta);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--papel); color: var(--tinta); font: 16px/1.6 Inter, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; height: auto; display: block; }
+  .celular img { height: 100%; }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3, .logo, .preco { font-family: Oswald, "Arial Narrow", Impact, sans-serif; text-transform: uppercase; letter-spacing: .2px; }
+  h2 { font-size: clamp(36px, 6vw, 60px); line-height: .98; margin: 10px 0 18px; }
+  h2 em { font-style: normal; color: var(--vermelho); }
+  .tag { display: inline-block; font-weight: 800; font-size: 12px; letter-spacing: 2.4px; text-transform: uppercase; color: var(--vermelho); }
+  .lead { font-size: 18px; color: #2b2f3a; max-width: 640px; }
+  section { padding: 84px 0; }
+
+  /* botões */
+  .cta { display: inline-flex; align-items: center; justify-content: space-between; gap: 22px; background: var(--vermelho); color: #fff; text-decoration: none;
+    font-weight: 800; letter-spacing: 1px; text-transform: uppercase; font-size: 15px; padding: 18px 24px; border: var(--borda); box-shadow: var(--sombra); transition: transform .12s, box-shadow .12s; }
+  .cta:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--tinta); }
+  .cta:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--tinta); }
+  .cta.escuro { background: var(--tinta); box-shadow: 6px 6px 0 var(--vermelho); }
+  .cta .seta { font-size: 20px; }
+
+  /* topo */
+  .topo { position: sticky; top: 0; z-index: 20; background: var(--papel); border-bottom: var(--borda); }
+  .topo .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-size: 24px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+  .logo b { color: var(--vermelho); }
+  .topo .cta { padding: 10px 14px; font-size: 12px; box-shadow: 4px 4px 0 var(--tinta); }
+
+  /* hero */
+  .hero { background: radial-gradient(1200px 600px at 85% 10%, #2a3560 0%, transparent 60%), linear-gradient(160deg, var(--noite) 0%, var(--noite2) 55%, #5a1620 100%); color: #fff; padding: 64px 0 90px; border-bottom: var(--borda); overflow: hidden; }
+  .hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; }
+  .selo { display: inline-block; background: var(--amarelo); color: var(--tinta); font-weight: 800; font-size: 12px; letter-spacing: 2px; padding: 8px 12px; border: var(--borda); transform: rotate(-1.5deg); }
+  .hero h1 { font-size: clamp(50px, 8.4vw, 96px); line-height: .92; margin: 22px 0 20px; }
+  .hero h1 span { color: var(--amarelo); }
+  .hero p { font-size: 18px; color: #dfe3ee; max-width: 560px; }
+  .checks { list-style: none; padding: 0; margin: 22px 0 30px; }
+  .checks li { display: flex; gap: 12px; align-items: flex-start; margin: 10px 0; font-weight: 500; }
+  .checks li::before { content: "✓"; flex: none; width: 24px; height: 24px; display: grid; place-items: center; background: var(--amarelo); color: var(--tinta); font-weight: 800; border-radius: 50%; font-size: 14px; margin-top: 1px; }
+  .hero .mini { margin-top: 18px; font-size: 13px; color: #b9bfd0; letter-spacing: .4px; }
+  .hero .mini b { color: #fff; letter-spacing: 1.5px; }
+
+  .celular { position: relative; justify-self: center; width: min(320px, 78vw); aspect-ratio: 9 / 18.5; border: 4px solid var(--tinta); border-radius: 42px; background: #000; padding: 10px; box-shadow: 14px 14px 0 var(--vermelho), 14px 14px 0 4px var(--tinta); transform: rotate(3deg); }
+  .celular img { width: 100%; height: 100%; object-fit: cover; border-radius: 32px; }
+  .celular .notch { position: absolute; top: 18px; left: 50%; width: 90px; height: 22px; transform: translateX(-50%); background: #000; border-radius: 14px; }
+  .balao { position: absolute; background: #fff; color: var(--tinta); border: var(--borda); font-weight: 800; font-size: 13px; padding: 10px 14px; box-shadow: 4px 4px 0 var(--tinta); text-transform: uppercase; letter-spacing: .5px; }
+  .balao.b1 { left: -46px; bottom: 90px; transform: rotate(-6deg); }
+  .balao.b2 { right: -34px; top: 70px; transform: rotate(5deg); background: var(--amarelo); }
+
+  /* faixa corrida */
+  .faixa { background: var(--tinta); color: #fff; overflow: hidden; border-bottom: var(--borda); }
+  .faixa .trilho { display: flex; width: max-content; animation: corre 28s linear infinite; }
+  .faixa span { font-family: Oswald, sans-serif; text-transform: uppercase; font-size: 22px; padding: 14px 22px; white-space: nowrap; }
+  .faixa span:nth-child(even) { color: var(--amarelo); }
+  @keyframes corre { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .faixa .trilho { animation: none; } }
+
+  /* estilos */
+  .estilos { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 38px; }
+  .card { background: #fff; border: var(--borda); box-shadow: var(--sombra); padding: 26px; }
+  .card h3 { font-size: 32px; line-height: 1; margin: 6px 0 10px; }
+  .chip { display: inline-block; font-weight: 800; font-size: 12px; letter-spacing: 1.5px; color: #fff; padding: 6px 10px; border: 2px solid var(--tinta); }
+  .chip.v { background: var(--vermelho); } .chip.p { background: var(--petroleo); }
+  .card p { color: #353a47; margin: 0 0 16px; }
+  .quadros { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .quadros img { aspect-ratio: 9/16; object-fit: cover; border: 2px solid var(--tinta); }
+  .foto-exp { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 30%; border: 2px solid var(--tinta); }
+  .livre { margin-top: 34px; background: var(--amarelo); border: var(--borda); box-shadow: var(--sombra); padding: 22px 26px; display: flex; gap: 18px; align-items: center; }
+  .livre .ic { font-size: 40px; line-height: 1; }
+  .livre p { margin: 0; font-size: 17px; }
+
+  /* como funciona */
+  .escuro-sec { background: var(--noite); color: #fff; border-top: var(--borda); border-bottom: var(--borda); }
+  .escuro-sec .tag { color: var(--amarelo); }
+  .escuro-sec .lead { color: #cfd4e2; }
+  .passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 36px; }
+  .passo { border: 2px solid #3a4462; padding: 24px; background: #1d2336; }
+  .passo .n { font-family: Oswald, sans-serif; font-size: 54px; line-height: 1; color: var(--vermelho); }
+  .passo h3 { font-size: 26px; margin: 10px 0 8px; }
+  .passo p { margin: 0; color: #c3c9d8; }
+  .nota { margin-top: 28px; border-left: 5px solid var(--amarelo); padding: 6px 0 6px 18px; color: #dfe3ee; max-width: 760px; }
+
+  /* conteúdo */
+  .itens { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 34px; }
+  .item { background: #fff; border: var(--borda); padding: 22px 24px; display: grid; grid-template-columns: 58px 1fr; gap: 16px; align-items: start; }
+  .item .num { font-family: Oswald, sans-serif; font-size: 13px; letter-spacing: 1.5px; color: #fff; background: var(--tinta); text-align: center; padding: 8px 0; }
+  .item h3 { font-size: 22px; margin: 0 0 4px; line-height: 1.1; }
+  .item p { margin: 0; color: #444a58; font-size: 15px; }
+
+  /* galeria */
+  .galeria { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 34px; }
+  .galeria figure { margin: 0; }
+  .galeria img { aspect-ratio: 9/16; object-fit: cover; border: var(--borda); box-shadow: 4px 4px 0 var(--tinta); }
+  .galeria figcaption { font-size: 12px; font-weight: 700; margin-top: 10px; text-transform: uppercase; letter-spacing: .8px; color: var(--cinza); }
+
+  /* para quem */
+  .duas { display: grid; grid-template-columns: 1.1fr .9fr; gap: 30px; align-items: start; }
+  .requisitos { background: var(--tinta); color: #fff; border: var(--borda); box-shadow: 8px 8px 0 var(--vermelho); padding: 28px; }
+  .requisitos h3 { font-size: 34px; line-height: 1; margin: 6px 0 16px; }
+  .requisitos .tag { color: var(--amarelo); }
+  .requisitos ul { padding-left: 18px; margin: 0; color: #d6dae5; }
+  .requisitos li { margin: 8px 0; }
+  .requisitos .obs { margin-top: 16px; font-size: 13px; color: #9aa1b4; }
+
+  /* oferta */
+  .oferta-sec { background: var(--noite); color: #fff; border-top: var(--borda); }
+  .oferta-sec .tag { color: var(--amarelo); }
+  .oferta-sec .lead { color: #cfd4e2; }
+  .oferta { max-width: 520px; margin: 36px auto 0; background: var(--papel); color: var(--tinta); border: var(--borda); box-shadow: 12px 12px 0 var(--vermelho), 12px 12px 0 3px var(--tinta); padding: 32px; }
+  .oferta h3 { font-size: 40px; line-height: 1; margin: 6px 0 4px; }
+  .oferta .sub { color: var(--cinza); margin: 0 0 18px; }
+  .oferta ul { list-style: none; padding: 0; margin: 0 0 22px; }
+  .oferta li { padding: 9px 0 9px 30px; border-bottom: 1px dashed #cfc6b2; position: relative; }
+  .oferta li::before { content: "✓"; position: absolute; left: 4px; color: var(--vermelho); font-weight: 800; }
+  .preco { font-size: 72px; font-weight: 700; line-height: 1; margin: 6px 0 20px; }
+  .preco small { font-size: 32px; }
+  .oferta .cta { width: 100%; }
+  .vitrine { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: -6px 0 22px; }
+  .vitrine img { aspect-ratio: 9/16; object-fit: cover; border: 2px solid var(--tinta); box-shadow: 3px 3px 0 var(--tinta); }
+  .vitrine img:nth-child(odd) { transform: rotate(-2deg); } .vitrine img:nth-child(even) { transform: rotate(2deg) translateY(6px); }
+  .oferta .rodape { font-size: 12px; color: var(--cinza); margin-top: 16px; text-align: center; }
+
+  /* faq */
+  .faq { max-width: 820px; margin-top: 30px; }
+  details { border-bottom: var(--borda); padding: 18px 0; }
+  summary { cursor: pointer; list-style: none; font-weight: 800; font-size: 17px; display: flex; justify-content: space-between; gap: 20px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; font-size: 24px; line-height: 1; }
+  details[open] summary::after { content: "–"; }
+  details p { margin: 12px 0 0; color: #3a3f4c; }
+
+  /* final */
+  .final { background: var(--vermelho); color: #fff; text-align: center; border-top: var(--borda); }
+  .final h2 { font-size: clamp(42px, 7vw, 76px); }
+  .final h2 span { color: var(--amarelo); }
+  .final .cta { background: var(--tinta); box-shadow: 6px 6px 0 #fff; }
+  footer { background: var(--tinta); color: #9aa1b4; font-size: 13px; padding: 34px 0 110px; }
+  footer .logo { color: #fff; }
+
+  /* barra fixa */
+  .barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: var(--tinta); color: #fff; border-top: 3px solid var(--vermelho); transform: translateY(110%); transition: transform .25s; }
+  .barra.on { transform: none; }
+  .barra .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 70px; }
+  .barra b { font-family: Oswald, sans-serif; font-size: 20px; text-transform: uppercase; }
+  .barra small { display: block; color: #9aa1b4; font-size: 12px; }
+  .barra .cta { padding: 12px 16px; font-size: 13px; box-shadow: 3px 3px 0 #fff; }
+
+  @media (max-width: 900px) {
+    section { padding: 64px 0; }
+    .hero .wrap, .duas { grid-template-columns: 1fr; }
+    .celular { margin-top: 20px; }
+    .estilos, .itens { grid-template-columns: 1fr; }
+    .passos { grid-template-columns: 1fr; }
+    .galeria { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .topo .cta span.txt { display: none; }
+    .hero h1 { font-size: 54px; }
+    .cta { width: 100%; }
+    .topo .cta, .barra .cta { width: auto; }
+    .balao.b1 { left: -8px; } .balao.b2 { right: -8px; }
+    .livre { flex-direction: column; align-items: flex-start; }
+    .preco { font-size: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="wrap">
+    <a class="logo" href="#">Flow <b>Poly</b></a>
+    <a class="cta comprar" href="https://pay.kirvano.com/95b31e67-2deb-4d0f-bc6e-e9297da3a7ea" target="_blank" rel="noopener"><span class="txt">Quero o kit</span><span class="seta">↗</span></a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="selo">DO @FLOWPOLY.3D PARA O SEU CANAL</span>
+        <h1>Curtiu os vídeos?<br><span>Agora crie os seus.</span></h1>
+        <p>Histórias em primeira pessoa e vídeos "como funciona" em 3D, feitos com IA. O kit traz as ferramentas que eu uso e um guia direto ao ponto para você criar os seus, do jeito que quiser.</p>
+        <ul class="checks">
+          <li>Sem aparecer e sem saber programar ou desenhar.</li>
+          <li>Seu tema, seu roteiro, seu estilo.</li>
+          <li>Do pedido ao MP4 vertical pronto para postar.</li>
+        </ul>
+        <a class="cta comprar" href="https://pay.kirvano.com/95b31e67-2deb-4d0f-bc6e-e9297da3a7ea" target="_blank" rel="noopener">Quero o kit · R$ 37,90 <span class="seta">↗</span></a>
+        <div class="mini"><b>PAGAMENTO ÚNICO • ACESSO IMEDIATO</b><br>Para usar: computador + assinatura paga do Claude, à parte.</div>
+      </div>
+      <div class="celular">
+        <div class="notch"></div>
+        <img src="img/pov_16.jpg" alt="Quadro de um vídeo POV 3D com alerta no celular" width="540" height="960">
+        <div class="balao b1">Você está na cena</div>
+        <div class="balao b2">Feito com IA</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="faixa" aria-hidden="true">
+    <div class="trilho">
+      <span>POV 3D</span><span>✳</span><span>Explicativo 3D</span><span>✳</span><span>Roteiro</span><span>✳</span><span>Vozes com IA</span><span>✳</span><span>Animação</span><span>✳</span><span>Render em MP4</span><span>✳</span>
+      <span>POV 3D</span><span>✳</span><span>Explicativo 3D</span><span>✳</span><span>Roteiro</span><span>✳</span><span>Vozes com IA</span><span>✳</span><span>Animação</span><span>✳</span><span>Render em MP4</span><span>✳</span>
+    </div>
+  </div>
+
+  <!-- DOIS ESTILOS -->
+  <section>
+    <div class="wrap">
+      <span class="tag">Dois estilos em um kit</span>
+      <h2>Um canal.<br><em>Dois formatos que prendem.</em></h2>
+      <p class="lead">Os mesmos dois formatos do perfil. Use um, use os dois, misture como quiser.</p>
+      <div class="estilos">
+        <article class="card">
+          <span class="chip v">POV 3D</span>
+          <h3>Você dentro da história</h3>
+          <p>Câmera em primeira pessoa com olho de peixe, mãos e braços em primeiro plano, traço de desenho, vozes de vários personagens e legendas coloridas.</p>
+          <div class="quadros">
+            <img src="img/pov_4.jpg" alt="Quadro POV: início da história" width="540" height="960">
+            <img src="img/pov_28.jpg" alt="Quadro POV: alerta no celular" width="540" height="960">
+            <img src="img/pov_96.jpg" alt="Quadro POV: tensão no abrigo" width="540" height="960">
+          </div>
+        </article>
+        <article class="card">
+          <span class="chip p">EXPLICATIVO 3D</span>
+          <h3>Como funciona por dentro</h3>
+          <p>Maquete 3D com corte transversal, setas, rótulos e narração sincronizada palavra a palavra. Ideal para curiosidades, ciência e engenharia.</p>
+          <img class="foto-exp" src="img/explicativo.webp" alt="Maquete 3D de uma fazenda autossustentável com rótulos: peixes, cisterna, lavoura, galinheiro, vaca e composto" width="584" height="801">
+        </article>
+      </div>
+      <div class="livre">
+        <div class="ic">✳</div>
+        <p><b>Você é livre para criar.</b> Terror, comédia, drama, ciência, um roteiro escrito por você. O kit tem um padrão pronto para quem quer começar rápido, mas segue o que você pedir.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="escuro-sec">
+    <div class="wrap">
+      <span class="tag">Você dirige. A IA constrói.</span>
+      <h2>"Tá, mas como<br>esses vídeos são feitos?"</h2>
+      <p class="lead">Tudo acontece numa conversa com o Claude Code. Você diz o que quer, ele escreve o código, gera as vozes, anima e renderiza.</p>
+      <div class="passos">
+        <div class="passo"><div class="n">01</div><h3>Peça</h3><p>Digite o comando do estilo e a sua ideia. Pode ser uma frase ou um roteiro completo.</p></div>
+        <div class="passo"><div class="n">02</div><h3>Revise</h3><p>Aprove o roteiro, confira as fotos de revisão e peça os ajustes que quiser.</p></div>
+        <div class="passo"><div class="n">03</div><h3>Poste</h3><p>Receba o MP4 vertical 1080×1920, pronto para Reels, TikTok e Shorts.</p></div>
+      </div>
+      <p class="nota">Você não precisa saber programar. O guia mostra como pedir, revisar e corrigir. O resto é prática.</p>
+    </div>
+  </section>
+
+  <!-- O QUE VEM -->
+  <section>
+    <div class="wrap">
+      <span class="tag">O que você recebe por R$ 37,90</span>
+      <h2>Tudo que eu uso,<br><em>pronto para instalar.</em></h2>
+      <div class="itens">
+        <div class="item"><div class="num">01</div><div><h3>Skill POV 3D</h3><p>Cria histórias em primeira pessoa com olho de peixe, mãos detalhadas, vários personagens, alertas na tela e card final.</p></div></div>
+        <div class="item"><div class="num">02</div><div><h3>Skill Explicativo 3D</h3><p>Cria vídeos "como funciona" em maquete 3D, do roteiro aprovado ao MP4 com narração, legendas e trilha.</p></div></div>
+        <div class="item"><div class="num">03</div><div><h3>Motor 3D pronto</h3><p>Câmera, traço de desenho, personagens, legendas, efeitos sonoros e render já funcionando. Você só troca a história.</p></div></div>
+        <div class="item"><div class="num">04</div><div><h3>Guia passo a passo</h3><p>Em PDF: instalação, como usar cada estilo, como revisar e como pedir ajustes.</p></div></div>
+        <div class="item"><div class="num">05</div><div><h3>Instalador em 1 clique</h3><p>Para Windows e Mac. Copia as skills, instala as bibliotecas e configura sua chave de voz.</p></div></div>
+        <div class="item"><div class="num">06</div><div><h3>Vozes com IA</h3><p>Dublagem com vários personagens e sotaque brasileiro, sincronizada com as legendas.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <span class="tag">Feito com o kit</span>
+      <h2>Quadros reais<br><em>de um episódio.</em></h2>
+      <div class="galeria">
+        <figure><img src="img/pov_4.jpg" alt="Quadro 1" width="540" height="960"><figcaption>01 · A rotina</figcaption></figure>
+        <figure><img src="img/pov_28.jpg" alt="Quadro 2" width="540" height="960"><figcaption>02 · O alerta</figcaption></figure>
+        <figure><img src="img/pov_50.jpg" alt="Quadro 3" width="540" height="960"><figcaption>03 · A fuga</figcaption></figure>
+        <figure><img src="img/pov_76.jpg" alt="Quadro 4" width="540" height="960"><figcaption>04 · A regra</figcaption></figure>
+        <figure><img src="img/pov_96.jpg" alt="Quadro 5" width="540" height="960"><figcaption>05 · A voz</figcaption></figure>
+        <figure><img src="img/pov_112.jpg" alt="Quadro 6" width="540" height="960"><figcaption>06 · A escolha</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUEM -->
+  <section>
+    <div class="wrap duas">
+      <div>
+        <span class="tag">Antes de começar</span>
+        <h2>É para você<br><em>se você quer criar.</em></h2>
+        <ul class="checks" style="color:var(--tinta)">
+          <li>Quer um canal sem mostrar o rosto.</li>
+          <li>Quer contar suas próprias histórias ou explicar o seu nicho.</li>
+          <li>Topa aprender a dirigir a IA, mesmo começando do zero.</li>
+          <li>Quer testar, corrigir e melhorar a cada vídeo.</li>
+        </ul>
+      </div>
+      <div class="requisitos">
+        <span class="tag">Seu kit de partida</span>
+        <h3>Computador + IA<br>+ vontade de fazer.</h3>
+        <ul>
+          <li>Computador Windows ou Mac.</li>
+          <li>Assinatura paga do Claude (com Claude Code), contratada à parte.</li>
+          <li>Conta na ElevenLabs para as vozes, à parte.</li>
+          <li>Recomendado: 16 GB de RAM. Placa de vídeo dedicada deixa o render mais rápido.</li>
+        </ul>
+        <p class="obs">Não funciona só pelo celular. As ferramentas não estão incluídas no valor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFERTA -->
+  <section class="oferta-sec" id="oferta">
+    <div class="wrap">
+      <span class="tag">Comece hoje</span>
+      <h2>Curtiu assistir?<br>Agora crie.</h2>
+      <p class="lead">Tudo o que você precisa para sair do zero e publicar o seu primeiro vídeo 3D com IA.</p>
+      <div class="oferta">
+        <div class="vitrine">
+          <img src="img/pov_4.jpg" alt="Quadro de vídeo POV 3D: a rotina" width="540" height="960">
+          <img src="img/pov_28.jpg" alt="Quadro de vídeo POV 3D: o alerta" width="540" height="960">
+          <img src="img/pov_76.jpg" alt="Quadro de vídeo POV 3D: a regra" width="540" height="960">
+          <img src="img/pov_112.jpg" alt="Quadro de vídeo POV 3D: a escolha final" width="540" height="960">
+        </div>
+        <span class="tag">O kit completo</span>
+        <h3>Kit Flow Poly</h3>
+        <p class="sub">Vídeos 3D com IA · POV e Explicativo</p>
+        <ul>
+          <li>2 skills prontas: POV 3D e Explicativo 3D</li>
+          <li>Motor 3D com câmera, personagens, som e render</li>
+          <li>Guia passo a passo em PDF</li>
+          <li>Instalador para Windows e Mac</li>
+          <li>Liberdade total de tema, roteiro e estilo</li>
+        </ul>
+        <span class="tag" style="color:var(--cinza)">Pagamento único</span>
+        <div class="preco">R$ 37<small>,90</small></div>
+        <a class="cta comprar" href="https://pay.kirvano.com/95b31e67-2deb-4d0f-bc6e-e9297da3a7ea" target="_blank" rel="noopener">Quero meu acesso agora <span class="seta">↗</span></a>
+        <p class="rodape">Para usar o kit, você precisa de computador e assinatura paga do Claude, contratada à parte.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="wrap">
+      <span class="tag">Sem dúvida no caminho</span>
+      <h2>Perguntas<br><em>frequentes.</em></h2>
+      <div class="faq">
+        <details><summary>Preciso saber programar ou desenhar?</summary><p>Não. Você conversa com o Claude Code em português; ele escreve o código e monta as cenas. O guia mostra como pedir e como revisar.</p></details>
+        <details><summary>Posso criar qualquer tipo de história ou tema?</summary><p>Sim. O kit tem um padrão pronto para começar rápido, mas tema, gênero, roteiro, duração e estilo são escolha sua.</p></details>
+        <details><summary>Dá para fazer tudo pelo celular?</summary><p>Não. É preciso um computador Windows ou Mac para instalar e renderizar os vídeos.</p></details>
+        <details><summary>As ferramentas estão incluídas nos R$ 37,90?</summary><p>Não. O valor é do kit (skills, motor, instalador e guia). A assinatura do Claude e a conta de vozes são contratadas à parte.</p></details>
+        <details><summary>Quanto tempo leva para fazer um vídeo?</summary><p>Depende do vídeo e do seu computador. O render de um vídeo de 2 minutos leva de 10 a 30 minutos; o resto do tempo é você revisando e pedindo ajustes.</p></details>
+        <details><summary>É garantia de viralizar ou ganhar dinheiro?</summary><p>Não. O kit te dá as ferramentas e o caminho. O resultado depende das suas histórias, da constância e do seu público.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <section class="final">
+    <div class="wrap">
+      <span class="tag" style="color:#fff">O próximo vídeo pode ser seu</span>
+      <h2>Não precisa ficar perfeito.<br><span>Precisa existir.</span></h2>
+      <a class="cta comprar" href="https://pay.kirvano.com/95b31e67-2deb-4d0f-bc6e-e9297da3a7ea" target="_blank" rel="noopener">Quero o kit · R$ 37,90 <span class="seta">↗</span></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#">Flow <b>Poly</b></a>
+    <p>Kit Flow Poly · Vídeos 3D com IA · @flowpoly.3d</p>
+    <p>Claude, ElevenLabs e demais marcas citadas pertencem aos seus donos. Este produto não é afiliado a elas. Resultados variam de pessoa para pessoa.</p>
+    <p>© 2026 Flow Poly. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<div class="barra" id="barra">
+  <div class="wrap">
+    <div><b>Kit Flow Poly</b><small>Pagamento único · R$ 37,90</small></div>
+    <a class="cta comprar" href="https://pay.kirvano.com/95b31e67-2deb-4d0f-bc6e-e9297da3a7ea" target="_blank" rel="noopener">Quero o kit <span class="seta">↗</span></a>
+  </div>
+</div>
+
+<script>
+  const barra = document.getElementById('barra'), hero = document.querySelector('.hero'), oferta = document.getElementById('oferta');
+  const atualiza = () => {
+    const passouHero = hero.getBoundingClientRect().bottom < 0;
+    const r = oferta.getBoundingClientRect(), naOferta = r.top < innerHeight && r.bottom > 0;
+    barra.classList.toggle('on', passouHero && !naOferta);
+  };
+  addEventListener('scroll', atualiza, { passive: true }); atualiza();
+</script>
+</body>
+</html>
